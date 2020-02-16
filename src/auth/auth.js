@@ -22,10 +22,14 @@ export const adminCloud = () => {
 export const authStateChanged = () => {
   auth.onAuthStateChanged(user => {
     if (user) {
+      user.getIdTokenResult().then(idTokenResult => {
+        user.admin = idTokenResult.claims.admin;
+
+        setupNavbarUI(user);
+      });
       dataBase.collection('recipes').onSnapshot(
         snapshot => {
           setupRecipeItem(snapshot.docs);
-          setupNavbarUI(user);
         },
         err => {
           console.log(err.message);
@@ -88,9 +92,11 @@ export const addSignUpListener = () => {
         const modalSignUp = document.querySelector('#modal-signup');
         M.Modal.getInstance(modalSignUp).close();
         signUpForm.reset();
+        signUpForm.querySelector('.error').textContent = '';
       })
       .catch(err => {
-        M.toast({ html: err.message });
+        // M.toast({ html: err.message });
+        signUpForm.querySelector('.error').textContent = err.message;
       });
   });
 };
@@ -122,9 +128,11 @@ export const addLogInListener = () => {
         const modalLogIn = document.querySelector('#modal-login');
         M.Modal.getInstance(modalLogIn).close();
         logInForm.reset();
+        logInForm.querySelector('.error').textContent = "";
       })
       .catch(err => {
-        M.toast({ html: err.message });
+        // M.toast({ html: err.message });
+        logInForm.querySelector('.error').textContent = err.message;
       });
   });
 };

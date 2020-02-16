@@ -4,7 +4,7 @@ import {
   addLogInListener,
   authStateChanged,
   createRecipe,
-  adminCloud
+  adminCloud,
 } from './auth/auth';
 
 import Navbar from './components/component-navbar/component-navbar';

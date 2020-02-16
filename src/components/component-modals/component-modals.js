@@ -51,6 +51,7 @@ class Modals {
               <label for="signup-bio">One Line Bio</label>
             </div>
             <button class="btn red darken-1 z-depth-0">Sign up</button>
+            <p class="error pink-text center-align"></p>
           </form>
         </div>
       </div>`;
@@ -71,6 +72,7 @@ class Modals {
               <label for="login-password">Your password</label>
             </div>
             <button class="btn red darken-1 z-depth-0">Login</button>
+            <p class="error pink-text center-align"></p>
           </form>
         </div>
       </div>`;

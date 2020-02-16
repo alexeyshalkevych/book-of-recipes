@@ -27,7 +27,7 @@ class Navbar {
             <li class="logged-in" style="display: none;">
               <a href="#" class="grey-text" id="logout">Logout</a>
             </li>
-            <li class="logged-in" style="display: none;">
+            <li class="admin" style="display: none;">
               <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Recipes</a>
             </li>
             <li class="logged-out" style="display: none;">
@@ -45,8 +45,12 @@ class Navbar {
     const loggedInLinks = document.querySelectorAll('.logged-in');
     const loggedOutLinks = document.querySelectorAll('.logged-out');
     const accauntDetails = document.querySelector('.account-details');
+    const adminItems = document.querySelectorAll('.admin');
 
     if (user) {
+      if (user.admin) {
+        adminItems.forEach(item => (item.style.display = 'block'));
+      }
       dataBase
         .collection('users')
         .doc(user.uid)
@@ -55,6 +59,7 @@ class Navbar {
           const accauntDescription = `
           <p>Logged in as <strong>${user.email}</strong></p>
           <p>${doc.data().bio}</p>
+          <p class="pink-text">${user.admin ? 'Admin' : ''}</p>
           `;
           accauntDetails.innerHTML = accauntDescription;
         });
@@ -62,6 +67,7 @@ class Navbar {
       loggedInLinks.forEach(item => (item.style.display = 'block'));
       loggedOutLinks.forEach(item => (item.style.display = 'none'));
     } else {
+      adminItems.forEach(item => (item.style.display = 'none'));
       accauntDetails.innerHTML = '';
 
       loggedInLinks.forEach(item => (item.style.display = 'none'));

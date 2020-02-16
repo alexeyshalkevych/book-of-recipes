@@ -13,7 +13,7 @@ class Form {
 
   renderAdminForm() {
     return `
-    <form class="center-align admin-actions container" style="margin: 40px auto; max-width: 300px">
+    <form class="center-align admin-actions admin" style="display: none;">
       <div class="input-field">
         <input  type="email" id="admin-email" placeholder="User email" required />
       </div>
