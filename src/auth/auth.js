@@ -7,12 +7,15 @@ import M from 'materialize-css';
 export const authStateChanged = () => {
   auth.onAuthStateChanged(user => {
     if (user) {
-      dataBase
-        .collection('recipes')
-        .onSnapshot(snapshot => {
+      dataBase.collection('recipes').onSnapshot(
+        snapshot => {
           setupRecipeItem(snapshot.docs);
           setupNavbarUI(user);
-        });
+        },
+        err => {
+          console.log(err.message);
+        },
+      );
     } else {
       setupRecipeItem([]);
       setupNavbarUI();
@@ -58,6 +61,14 @@ export const addSignUpListener = () => {
 
     auth
       .createUserWithEmailAndPassword(email, password)
+      .then(cred => {
+        return dataBase
+          .collection('users')
+          .doc(cred.user.uid)
+          .set({
+            bio: signUpForm['signup-bio'].value,
+          });
+      })
       .then(() => {
         const modalSignUp = document.querySelector('#modal-signup');
         M.Modal.getInstance(modalSignUp).close();

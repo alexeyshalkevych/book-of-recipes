@@ -1,3 +1,4 @@
+import { dataBase } from '../../auth/auth-settings';
 import recipesLogo from '../../assets/images/recipes-logo.svg';
 import './component-navbar-style.scss';
 
@@ -43,11 +44,26 @@ class Navbar {
   setupNavbarUI(user) {
     const loggedInLinks = document.querySelectorAll('.logged-in');
     const loggedOutLinks = document.querySelectorAll('.logged-out');
+    const accauntDetails = document.querySelector('.account-details');
 
     if (user) {
+      dataBase
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(doc => {
+          const accauntDescription = `
+          <p>Logged in as <strong>${user.email}</strong></p>
+          <p>${doc.data().bio}</p>
+          `;
+          accauntDetails.innerHTML = accauntDescription;
+        });
+
       loggedInLinks.forEach(item => (item.style.display = 'block'));
       loggedOutLinks.forEach(item => (item.style.display = 'none'));
     } else {
+      accauntDetails.innerHTML = '';
+
       loggedInLinks.forEach(item => (item.style.display = 'none'));
       loggedOutLinks.forEach(item => (item.style.display = 'block'));
     }
