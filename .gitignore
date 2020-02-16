@@ -1,5 +1,6 @@
 # production
 /build
+/functions
 
 # Logs
 logs

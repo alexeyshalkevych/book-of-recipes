@@ -1,5 +1,6 @@
 import { dataBase } from '../../auth/auth-settings';
 import recipesLogo from '../../assets/images/recipes-logo.svg';
+import M from 'materialize-css';
 import './component-navbar-style.scss';
 
 class Navbar {

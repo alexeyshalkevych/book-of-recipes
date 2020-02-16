@@ -1,6 +1,29 @@
 .nav-wrapper {
-  .brand-logo img{
+  .brand-logo img {
     width: 100px;
     padding-top: 15px;
+  }
+
+  @media only screen and (max-width: 992px) {
+    .brand-logo {
+      left: 0;
+      transform: translateX(0);
+      
+      img {
+        width: 75px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .hide-on-med-and-down {
+      display: block !important;
+      
+    }
+
+    ul a {
+      font-size: 0.9rem;
+      padding: 0 7px;
+    }
   }
 }
