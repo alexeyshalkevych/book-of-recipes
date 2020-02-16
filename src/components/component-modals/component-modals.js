@@ -83,12 +83,16 @@ class Modals {
               <label for="title">Recipe Title</label>
             </div>
             <div class="input-field">
-              <input type="text" id="title" required>
-              <label for="title">Recipe Image Link</label>
+              <input type="text" id="image" required>
+              <label for="image">Recipe Image Link</label>
+            </div>
+            <div class="input-field">
+              <textarea id="ingredients" class="materialize-textarea" required></textarea>
+              <label for="ingredients">Recipe Ingredients</label>
             </div>
             <div class="input-field">
               <textarea id="content" class="materialize-textarea" required></textarea>
-              <label for="content">Recipe Content</label>
+              <label for="content">Recipe Description</label>
             </div>
             <button class="btn yellow darken-2 z-depth-0">Create</button>
           </form>

@@ -1,29 +1,10 @@
+import { auth } from '../../auth/auth-settings';
+import { dataBase } from '../../auth/auth-settings';
 import M from 'materialize-css';
 import './component-recipes.scss';
 
 class Recipes {
-  constructor() {
-    this.recipesList = [
-      {
-        title: 'Recipe Item 1',
-        content: 'Lorem ipsum dolor sit amet.',
-        photo:
-          'https://s0.tchkcdn.com/i/13/1/471372_a4b3b617_a57_skumbriya_na_grile_depositphotos_74651683.jpg',
-      },
-      {
-        title: 'Recipe Item 2',
-        content: 'Lorem ipsum dolor sit amet.',
-        photo:
-          'https://s0.tchkcdn.com/i/13/1/471372_a4b3b617_a57_skumbriya_na_grile_depositphotos_74651683.jpg',
-      },
-      {
-        title: 'Recipe Item 3',
-        content: 'Lorem ipsum dolor sit amet.',
-        photo:
-          'https://s0.tchkcdn.com/i/13/1/471372_a4b3b617_a57_skumbriya_na_grile_depositphotos_74651683.jpg',
-      },
-    ];
-  }
+  constructor() {}
 
   init(container) {
     this.addToScreen(container, 'beforeend', this.renderRecipesList());
@@ -38,28 +19,44 @@ class Recipes {
   renderRecipesList() {
     return `
     <div class="container" style="margin-top: 40px;">
-      <ul class="collapsible popout z-depth-0 guides" style="border: none;">
-       ${
-         this.recipesList.length
-           ? this.recipesList.reduce(
-               (acc, item) => acc + this.renderRecipeItem(item),
-               '',
-             )
-           : '<h4 class="center-align">Login to view Recipes</h4>'
-       }
+      <ul class="collapsible popout z-depth-0 recipes" style="border: none;">
       </ul>
     </div>`;
   }
 
-  renderRecipeItem({ title, content, photo }) {
-    return `
-      <li>
-        <div class="collapsible-header grey lighten-4">${title}</div>
-        <div class="collapsible-body white">
-          <img src="${photo}" class="recipe__image">
-        </div>
-        <div class="collapsible-body white"><span>${content}</span></div>
-      </li>`;
+  setupRecipeItem(data) {
+    const recipesList = document.querySelector('.recipes');
+
+    if (data.length) {
+      let items = '';
+
+      data.forEach(doc => {
+        const { title, ingredients, description, image } = doc.data();
+        const recipeItemHTMLElement = `
+        <li>
+          <div class="collapsible-header grey lighten-4">
+            <h6>${title}</h6>
+          </div>
+          <div class="collapsible-body white">
+            <img src="${image}" class="recipe__image">
+          </div>
+          <div class="collapsible-body white">
+            <strong>Ingredients</strong>
+            <p>${ingredients}</p>
+          </div>
+          <div class="collapsible-body white">
+            <span>${description}</span>
+          </div>
+        </li>`;
+
+        items += recipeItemHTMLElement;
+      });
+
+      recipesList.innerHTML = items;
+    } else {
+      recipesList.innerHTML =
+        '<h5 class="center-align">Login to view recipes</h5>';
+    }
   }
 
   initCollapsible() {

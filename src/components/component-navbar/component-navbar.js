@@ -20,24 +20,37 @@ class Navbar {
             <img src="${recipesLogo}">
           </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li class="logged-in">
+            <li class="logged-in" style="display: none;">
               <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
             </li>
-            <li class="logged-in">
+            <li class="logged-in" style="display: none;">
               <a href="#" class="grey-text" id="logout">Logout</a>
             </li>
-            <li class="logged-in">
+            <li class="logged-in" style="display: none;">
               <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Recipes</a>
             </li>
-            <li class="logged-out">
+            <li class="logged-out" style="display: none;">
               <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
             </li>
-            <li class="logged-out">
+            <li class="logged-out" style="display: none;">
               <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
             </li>
           </ul>
         </div>
       </nav>`;
+  }
+
+  setupNavbarUI(user) {
+    const loggedInLinks = document.querySelectorAll('.logged-in');
+    const loggedOutLinks = document.querySelectorAll('.logged-out');
+
+    if (user) {
+      loggedInLinks.forEach(item => (item.style.display = 'block'));
+      loggedOutLinks.forEach(item => (item.style.display = 'none'));
+    } else {
+      loggedInLinks.forEach(item => (item.style.display = 'none'));
+      loggedOutLinks.forEach(item => (item.style.display = 'block'));
+    }
   }
 }
 
