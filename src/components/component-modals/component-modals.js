@@ -50,7 +50,7 @@ class Modals {
               <input type="text" id="signup-bio" required />
               <label for="signup-bio">One Line Bio</label>
             </div>
-            <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+            <button class="btn red darken-1 z-depth-0">Sign up</button>
           </form>
         </div>
       </div>`;
@@ -70,7 +70,7 @@ class Modals {
               <input type="password" id="login-password" required />
               <label for="login-password">Your password</label>
             </div>
-            <button class="btn yellow darken-2 z-depth-0">Login</button>
+            <button class="btn red darken-1 z-depth-0">Login</button>
           </form>
         </div>
       </div>`;
@@ -98,7 +98,7 @@ class Modals {
               <textarea id="content" class="materialize-textarea" required></textarea>
               <label for="content">Recipe Description</label>
             </div>
-            <button class="btn yellow darken-2 z-depth-0">Create</button>
+            <button class="btn red darken-1 z-depth-0">Create</button>
           </form>
         </div>
       </div>`;

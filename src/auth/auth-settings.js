@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
 // Add the Firebase products that you want to use
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/functions'
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -26,3 +27,4 @@ firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
 export const dataBase = firebase.firestore();
+export const functions = firebase.functions();

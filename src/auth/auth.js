@@ -1,7 +1,22 @@
 import { auth } from './auth-settings';
 import { dataBase } from './auth-settings';
+import { functions } from './auth-settings';
 import { setupRecipeItem, setupNavbarUI } from '../index';
 import M from 'materialize-css';
+
+//add admin cloud function
+export const adminCloud = () => {
+  const adminForm = document.querySelector('.admin-actions');
+
+  adminForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const adminEmail = document.querySelector('#admin-email').value;
+    const addAdminRole = functions.httpsCallable('addAdminRole');
+
+    addAdminRole({ email: adminEmail }).then(result => console.log(result));
+  });
+};
 
 // auth state
 export const authStateChanged = () => {
