@@ -32,23 +32,46 @@ class Recipes {
 
       data.forEach(doc => {
         const { title, ingredients, description, image } = doc.data();
+        const ingredientsArr = ingredients.split('\n');
+        const descriptionArr = description.split('\n');
+
         const recipeItemHTMLElement = `
         <li>
-          <div class="collapsible-header grey lighten-4">
+          <div class="collapsible-header yellow lighten-2">
             <h6>${title}</h6>
           </div>
-          <div class="collapsible-body white">
+          <div class="collapsible-body white image-box">
             <img src="${image}" class="recipe__image">
           </div>
           <div class="collapsible-body white">
-            <strong>Ingredients</strong>
-            <p>${ingredients}</p>
-          </div>
-          <div class="collapsible-body white">
-            <span>${description}</span>
+            <div class="recipes-content">
+              <div class="ingredients">
+                <h4 class="ingredients__title title">Ingredients</h4>
+                <ul class="ingredients__list">
+                  ${ingredientsArr
+                    .map(elem => {
+                      return `
+                  <li>&#9866; ${elem}</li>
+                  `;
+                    })
+                    .join('\n')}
+                </ul>
+              </div>
+              <div class="method">
+                <h4 class="method__title title">Method</h4>
+                <ul class="method__list">
+                  ${descriptionArr
+                    .map((elem, index) => {
+                      return `
+                  <li>${index + 1}. ${elem}</li>
+                  `;
+                    })
+                    .join('\n')}
+                </ul>
+              </div>
+            </div>
           </div>
         </li>`;
-
         items += recipeItemHTMLElement;
       });
 

@@ -85,7 +85,7 @@ export const addSignUpListener = () => {
           .collection('users')
           .doc(cred.user.uid)
           .set({
-            bio: signUpForm['signup-bio'].value,
+            username: signUpForm['signup-username'].value,
           });
       })
       .then(() => {

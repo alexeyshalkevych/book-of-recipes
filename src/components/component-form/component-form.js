@@ -15,7 +15,7 @@ class Form {
     return `
     <form class="center-align admin-actions admin" style="display: none;">
       <div class="input-field">
-        <input  type="email" id="admin-email" placeholder="User email" required />
+        <input  type="email" id="admin-email" class="admin__input" placeholder="User email" required />
       </div>
       <button class="btn-small red darken-1 z-depth-0">Make admin</button>
     </form>`;

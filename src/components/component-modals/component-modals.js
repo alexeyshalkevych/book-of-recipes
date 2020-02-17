@@ -39,16 +39,16 @@ class Modals {
           <h4>Sign up</h4><br />
           <form id="signup-form">
             <div class="input-field">
+              <input type="text" id="signup-username" required />
+              <label for="signup-username">User name</label>
+            </div>
+            <div class="input-field">
               <input type="email" id="signup-email" required />
               <label for="signup-email">Email address</label>
             </div>
             <div class="input-field">
               <input type="password" id="signup-password" required />
               <label for="signup-password">Choose password</label>
-            </div>
-            <div class="input-field">
-              <input type="text" id="signup-bio" required />
-              <label for="signup-bio">One Line Bio</label>
             </div>
             <button class="btn red darken-1 z-depth-0">Sign up</button>
             <p class="error pink-text center-align"></p>
@@ -98,7 +98,7 @@ class Modals {
             </div>
             <div class="input-field">
               <textarea id="content" class="materialize-textarea" required></textarea>
-              <label for="content">Recipe Description</label>
+              <label for="content">Recipe Methods</label>
             </div>
             <button class="btn red darken-1 z-depth-0">Create</button>
           </form>

@@ -1,5 +1,65 @@
+.collapsible-header h6{
+  font-weight: 500;
+}
+
 .recipe__image {
   height: 300px;
   object-fit: cover;
   max-width: 100%;
+}
+
+.image-box {
+  text-align: center;
+}
+
+div .recipe__image {
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  padding-bottom: 20px;
+  font-style: italic;
+}
+
+.recipes-content {
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 560px) {
+    display: block;
+  }
+
+  .ingredients {
+    padding: 10px;
+    width: 40%;
+
+    &__title {
+    }
+
+    &__list li{
+      padding: 6px 0;
+      font-size: 16px;
+    }
+
+    @media only screen and (max-width: 560px) {
+      width: 100%;
+    }
+  }
+
+  .method {
+    padding: 10px;
+    width: 60%;
+    &__title {
+    }
+
+    &__list li{
+      padding: 4px 0;
+      font-size: 16px;
+    }
+
+    @media only screen and (max-width: 560px) {
+      width: 100%;
+    }
+  }
 }

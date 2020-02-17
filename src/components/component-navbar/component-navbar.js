@@ -16,26 +16,26 @@ class Navbar {
 
   renderNavbar() {
     return `
-      <nav class="z-depth-0 grey lighten-4">
+      <nav class="z-depth-0 yellow lighten-2">
         <div class="nav-wrapper container">
           <a href="#" class="brand-logo">
             <img src="${recipesLogo}">
           </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="logged-in" style="display: none;">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+              <a href="#" class="red-text modal-trigger" data-target="modal-account">Account</a>
             </li>
             <li class="logged-in" style="display: none;">
-              <a href="#" class="grey-text" id="logout">Logout</a>
+              <a href="#" class="red-text" id="logout">Logout</a>
             </li>
             <li class="admin" style="display: none;">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Recipes</a>
+              <a href="#" class="red-text modal-trigger" data-target="modal-create">Create Recipes</a>
             </li>
             <li class="logged-out" style="display: none;">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+              <a href="#" class="red-text modal-trigger" data-target="modal-login">Login</a>
             </li>
             <li class="logged-out" style="display: none;">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+              <a href="#" class="red-text modal-trigger" data-target="modal-signup">Sign up</a>
             </li>
           </ul>
         </div>
@@ -59,7 +59,7 @@ class Navbar {
         .then(doc => {
           const accauntDescription = `
           <p>Logged in as <strong>${user.email}</strong></p>
-          <p>${doc.data().bio}</p>
+          <p>${doc.data().username}</p>
           <p class="pink-text">${user.admin ? 'Admin' : ''}</p>
           `;
           accauntDetails.innerHTML = accauntDescription;
