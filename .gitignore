@@ -1,6 +1,8 @@
 # production
 /build
-/functions
+/public
+/.firebase
+
 
 # Logs
 logs

@@ -1,5 +1,3 @@
-import { auth } from '../../auth/auth-settings';
-import { dataBase } from '../../auth/auth-settings';
 import M from 'materialize-css';
 import './component-recipes.scss';
 
